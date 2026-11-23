@@ -36,10 +36,40 @@ const stories = loadDir("content/stories").map((s) => {
 }).sort(byDate);
 
 const ytId = (u) => { const m = String(u || "").match(/(?:youtu\.be\/|v=|\/embed\/|\/shorts\/)([A-Za-z0-9_-]{6,})/); return m ? m[1] : ""; };
-const episodes = loadDir("content/episodes").map((e) => {
+const TV = S.mftv || {};
+const channelUrl = TV.channel_id ? `https://www.youtube.com/channel/${TV.channel_id}` : ((S.socials || []).find((x) => /youtube/i.test(x.label || x.url)) || {}).url || "";
+
+// Latest videos from the YouTube channel (its public feed holds the newest 15).
+// A video with its own file in content/episodes (same YouTube link) uses that file's details instead.
+const xmlText = (s) => String(s || "").replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, "&").trim();
+const tag = (x, t) => { const m = x.match(new RegExp(`<${t}[^>]*>([\\s\\S]*?)</${t}>`)); return m ? xmlText(m[1]) : ""; };
+async function channelVideos() {
+  if (!TV.channel_id || TV.auto_from_youtube === false) return [];
+  try {
+    const r = await fetch(`https://www.youtube.com/feeds/videos.xml?channel_id=${encodeURIComponent(TV.channel_id)}`, { signal: AbortSignal.timeout(15000) });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const xml = await r.text();
+    const vids = [...xml.matchAll(/<entry>([\s\S]*?)<\/entry>/g)].map(([, e]) => {
+      const id = tag(e, "yt:videoId");
+      const desc = tag(e, "media:description").split(/\n/).map((l) => l.trim()).filter(Boolean)[0] || "";
+      return { title: tag(e, "title"), yt: id, date: tag(e, "published").slice(0, 10), description: desc.length > 160 ? desc.slice(0, 157).replace(/\s+\S*$/, "") + "…" : desc, image: `https://i.ytimg.com/vi/${id}/hqdefault.jpg`, image_alt: tag(e, "title"), series: TV.default_series || "Latest", location: "", length: "", fromFeed: true };
+    }).filter((v) => v.yt && v.title);
+    console.log(`YouTube: found ${vids.length} video${vids.length === 1 ? "" : "s"} on the channel.`);
+    return vids;
+  } catch (err) {
+    warn.push(`Couldn't read the YouTube channel feed (${err.message}). Built MFTV from episode files only.`);
+    return [];
+  }
+}
+const manualEps = loadDir("content/episodes").map((e) => {
   const [pk, pt] = PLATE_CYCLE[(e.i + 2) % PLATE_CYCLE.length];
-  return { ...e, yt: ytId(e.youtube), plate: e.plate || pk, tone: e.tone || pt, description: e.description || "" };
-}).sort(byDate);
+  return { ...e, yt: ytId(e.youtube), plate: e.plate || pk, tone: e.tone || pt, description: e.description || "", date: String(e.date || "") };
+});
+const feedEps = await channelVideos();
+const episodes = [
+  ...manualEps.map((e) => { const f = feedEps.find((v) => v.yt && v.yt === e.yt); return f ? { ...f, ...Object.fromEntries(Object.entries(e).filter(([, v]) => v !== "" && v != null)) } : e; }),
+  ...feedEps.filter((v) => !manualEps.some((e) => e.yt === v.yt))
+].sort(byDate);
 
 const about = (() => { try { return parseFront(read("content/pages/about.md")); } catch { return { data: {}, body: "" }; } })();
 const find = (slug) => stories.find((s) => s.slug === slugify(slug || ""));
@@ -49,9 +79,9 @@ const pic = (o, sizes = "100vw") => o.image ? `<img src="${esc(o.image)}" alt="$
 const kick = (s) => `<p class="k">${esc(s.section)} / ${esc(s.format)} <span class="mute">/ ${esc(s.location)}</span></p>`;
 const card = (s) => `<a class="card" href="${s.url}"><div class="pl">${pic(s, "(max-width: 800px) 100vw, 50vw")}</div>${kick(s)}<h3 class="D">${esc(s.title)}</h3><p class="dek">${esc(s.dek)}</p></a>`;
 const playIcon = `<svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M9 6L22 14L9 22Z" fill="currentColor"/></svg>`;
-const player = (e) => `<div class="frame" data-yt="${esc(e.yt)}" data-title="${esc(e.title)}"><div class="pl">${pic(e)}</div><div class="ov"><span class="chip rec">MFTV</span><span class="chip">${esc(e.length || "")}</span></div><button class="play" type="button" data-play aria-label="Play ${esc(e.title)}">${playIcon}</button></div>
-<div class="g12 pinfo"><div class="pt"><p class="k">${esc(e.series)} / ${esc(e.location)}</p><h3 class="D">${esc(e.title)}</h3></div><p class="pd">${esc(e.description)}</p></div>`;
-const epInner = (e) => `<div class="pl">${pic(e, "33vw")}</div><p class="k mute">${esc(e.series)} / ${esc(e.length || "")}</p><h3 class="D">${esc(e.title)}</h3>`;
+const player = (e) => `<div class="frame" data-yt="${esc(e.yt)}" data-title="${esc(e.title)}"><div class="pl">${pic(e)}</div><div class="ov"><span class="chip rec">MFTV</span>${e.length ? `<span class="chip">${esc(e.length)}</span>` : ""}</div><button class="play" type="button" data-play aria-label="Play ${esc(e.title)}">${playIcon}</button></div>
+<div class="g12 pinfo"><div class="pt"><p class="k">${[e.series, e.location].filter(Boolean).map(esc).join(" / ")}</p><h3 class="D">${esc(e.title)}</h3></div><p class="pd">${esc(e.description)}</p></div>`;
+const epInner = (e) => `<div class="pl">${pic(e, "33vw")}</div><p class="k mute">${[e.series, e.length].filter(Boolean).map(esc).join(" / ")}</p><h3 class="D">${esc(e.title)}</h3>`;
 
 function newsletter(where) {
   const n = S.newsletter || {};
@@ -61,6 +91,8 @@ function newsletter(where) {
 <form class="nf" ${attrs}>${ext ? "" : `<input type="hidden" name="form-name" value="newsletter"><p class="hp"><label>Company <input name="company" tabindex="-1" autocomplete="off"></label></p>`}<p class="np">${esc(n.pitch || "")}</p>
 <div class="nrow"><label class="sr" for="nl-${where}">Email address</label><input id="nl-${where}" name="${esc(ext ? (n.field || "email") : "email")}" type="email" autocomplete="email" placeholder="you@example.com" required><button class="btn" type="submit">Subscribe</button></div><p class="msg" role="status" aria-live="polite"></p></form></div></section>`;
 }
+
+const tvSoon = () => `<div class="soon"><p class="ct">${esc(TV.coming_soon || "First episodes landing soon.")}</p>${channelUrl ? `<a class="btn" href="${esc(channelUrl)}" target="_blank" rel="noopener">Subscribe on YouTube</a>` : ""}</div>`;
 
 const NAV = [["Editorial", "/editorial/"], ["MFTV", "/mftv/"], ["Community", "/community/"], ["About", "/about/"]];
 function page({ title, desc, body, cur = "", cls = "", pathName = "/", image = "" }) {
@@ -135,8 +167,8 @@ ${hero ? `<section class="hero x"><div class="wrap"><a class="card" href="${hero
 <div class="g12 edit">${block(edit[0], "e1")}${block(edit[1], "e2")}
 ${edit[2] ? `<a class="card e3" href="${edit[2].url}">${kick(edit[2])}<h3>${esc(edit[2].title)}</h3><p class="dek">${esc(edit[2].dek)}</p></a>` : ""}${block(edit[3], "e4")}
 ${also.length ? `<div class="also">${also.map((s) => `<a class="card" href="${s.url}"><p class="k mute">${esc(s.section)} / ${esc(s.location)}</p><h4 class="D">${esc(s.title)}</h4></a>`).join("")}</div>` : ""}</div></div></section>
-${ep0 ? `<section class="tvb x"><div class="wrap"><div class="sh"><div><h2 class="D">MFTV</h2><p class="tag">${esc((S.mftv || {}).home_tagline || "")}</p></div><a class="more" href="/mftv/">Watch MFTV</a></div>
-${player(ep0)}<div class="eps">${eps.slice(0, 3).map((e) => `<a class="ep" href="/mftv/">${epInner(e)}</a>`).join("")}</div></div></section>` : ""}
+<section class="tvb x"><div class="wrap"><div class="sh"><div><h2 class="D">MFTV</h2><p class="tag">${esc(TV.home_tagline || "")}</p></div><a class="more" href="/mftv/">Watch MFTV</a></div>
+${ep0 ? `${player(ep0)}${eps.length ? `<div class="eps">${eps.slice(0, 3).map((e) => `<a class="ep" href="/mftv/">${epInner(e)}</a>`).join("")}</div>` : ""}` : tvSoon()}</div></section>
 <section class="com x"><div class="wrap g12"><p class="ct">${esc((S.community || {}).home_statement || "")}</p>
 <div class="cw"><p class="k mute">Built for</p><p class="who D">${esc((S.community || {}).built_for || "")}</p><div class="acts"><a class="btn" href="/community/">Explore community</a><a class="lnk" href="/contact/">Submit your work</a></div></div></div></section>
 ${newsletter("home")}` });
@@ -164,13 +196,13 @@ ${rel.length ? `<section class="x"><div class="wrap"><div class="sh"><h2 class="
 }
 
 function mftvPage() {
-  const tv = S.mftv || {};
+  const tv = TV;
   const series = tv.series || [];
   const json = JSON.stringify(episodes.map(player)).replace(/</g, "\\u003c");
   return page({ title: "MFTV", cls: "tv", cur: "/mftv/", pathName: "/mftv/", desc: tv.tagline, body: `
-<section class="tvp x"><div class="wrap"><div class="tvh"><h1 class="D">MFTV</h1><p class="tag">${esc(tv.tagline || "")}</p></div><div id="player">${episodes[0] ? player(episodes[0]) : `<p class="empty S">First episodes coming soon.</p>`}</div></div></section>
-${series.length ? `<section class="x sec"><div class="wrap"><div class="sh"><h2 class="D">Series</h2></div><ul class="ser">${series.map((x) => { const c = episodes.filter((e) => e.series === x.name).length; return `<li><h3 class="D">${esc(x.name)}</h3><p>${esc(x.text)}</p><p class="k mute">${c} episode${c === 1 ? "" : "s"}</p></li>`; }).join("")}</ul></div></section>` : ""}
-${episodes.length ? `<section class="x sec"><div class="wrap"><div class="sh"><h2 class="D">Episodes</h2></div><div class="eps all">${episodes.map((e, i) => `<button class="ep" type="button" data-ep="${i}" aria-pressed="${i === 0}">${epInner(e)}</button>`).join("")}</div></div></section>` : ""}
+<section class="tvp x"><div class="wrap"><div class="tvh"><h1 class="D">MFTV</h1><p class="tag">${esc(tv.tagline || "")}</p></div><div id="player">${episodes[0] ? player(episodes[0]) : tvSoon()}</div></div></section>
+${series.length ? `<section class="x sec"><div class="wrap"><div class="sh"><h2 class="D">Series</h2></div><ul class="ser">${series.map((x) => { const c = episodes.filter((e) => e.series === x.name).length; return `<li><h3 class="D">${esc(x.name)}</h3><p>${esc(x.text)}</p><p class="k mute">${c ? `${c} episode${c === 1 ? "" : "s"}` : "Coming soon"}</p></li>`; }).join("")}</ul></div></section>` : ""}
+${episodes.length ? `<section class="x sec"><div class="wrap"><div class="sh"><h2 class="D">Episodes</h2>${channelUrl ? `<a class="more" href="${esc(channelUrl)}" target="_blank" rel="noopener">All on YouTube</a>` : ""}</div><div class="eps all">${episodes.map((e, i) => `<button class="ep" type="button" data-ep="${i}" aria-pressed="${i === 0}">${epInner(e)}</button>`).join("")}</div></div></section>` : ""}
 <script type="application/json" id="eps">${json}</script>` });
 }
 
