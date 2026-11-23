@@ -53,9 +53,9 @@ To give an episode a series, location, running time or better description, add a
 
 The channel is set in `content/settings.json` under `mftv.channel_id`. Set `auto_from_youtube` to `false` to switch this off.
 
-**Daily rebuild setup (one time):**
+**Daily rebuild setup (one time):** a scheduled Netlify function (`netlify/functions/daily-rebuild.mjs`) triggers a rebuild every morning at 06:17 UTC.
 1. In Netlify, go to *Project configuration → Build & deploy → Build hooks*, click *Add build hook*, name it "Daily", and copy the URL.
-2. In GitHub, go to the repository's *Settings → Secrets and variables → Actions*, click *New repository secret*, name it `NETLIFY_BUILD_HOOK`, and paste the URL.
+2. In Netlify, go to *Project configuration → Environment variables*, click *Add a variable*, name it `NETLIFY_BUILD_HOOK`, paste the URL, and save. Then trigger one deploy so the function picks it up.
 
 ## Going live (one-time setup)
 
