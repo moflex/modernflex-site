@@ -54,6 +54,16 @@ const SUB = {
     const laces = [0, 1, 2, 3, 4].map((i) => `<line x1="${470 + i * 26}" y1="${470 - i * 14}" x2="${500 + i * 26}" y2="${500 - i * 14}" stroke="${g}" stroke-width="6" stroke-linecap="round"/>`).join("");
     return `<g transform="translate(0 -50)"><ellipse cx="500" cy="720" rx="380" ry="26" fill="${H(f)}"/><path d="M150 650C150 690 170 705 210 705H830C860 705 870 690 865 650Z" fill="${f}"/><rect x="160" y="632" width="700" height="26" rx="13" fill="${g}" stroke="${f}" stroke-width="6"/><path d="M175 632C185 520 290 470 410 462L560 395C625 372 705 395 762 465C805 520 842 580 852 632Z" fill="${f}"/><path d="M300 600C380 560 520 540 700 520C740 560 770 600 780 628H300Z" fill="${Hx(f, 1)}"/><path d="M640 418C700 410 750 440 790 500" stroke="${g}" stroke-width="5" fill="none"/>${laces}<rect x="160" y="500" width="40" height="120" rx="12" fill="${Hx(f)}"/></g>`;
   },
+  frame(f, g) {
+    const corners = [[230, 290], [770, 290], [230, 710], [770, 710]].map(([x, y]) => `<circle cx="${x}" cy="${y}" r="28" fill="${f}"/>`).join("");
+    return `<path d="M500 200L330 290M500 200L670 290" stroke="${f}" stroke-width="4" fill="none"/><circle cx="500" cy="200" r="10" fill="${f}"/><rect x="230" y="290" width="540" height="420" fill="none" stroke="${f}" stroke-width="42"/><rect x="272" y="332" width="456" height="336" fill="none" stroke="${f}" stroke-width="5"/><rect x="290" y="350" width="420" height="300" fill="${H(f)}" opacity=".55"/>${corners}<rect x="810" y="620" width="100" height="60" fill="${f}"/><rect x="824" y="636" width="64" height="6" fill="${g}"/><rect x="824" y="652" width="44" height="6" fill="${g}"/><rect y="860" width="1000" height="140" fill="${H(f, 1)}"/>`;
+  },
+  film(f, g) {
+    let holes = "", frames = "";
+    for (let x = -120; x < 1140; x += 60) holes += `<rect x="${x}" y="402" width="30" height="22" rx="4"/><rect x="${x}" y="576" width="30" height="22" rx="4"/>`;
+    for (let i = 0; i < 5; i++) frames += `<rect x="${-80 + i * 240}" y="440" width="210" height="120" fill="${i === 2 ? BL : H(g, i % 2)}"/>`;
+    return `<circle cx="760" cy="260" r="170" fill="${H(f)}"/><g transform="rotate(-12 500 500)"><rect x="-200" y="385" width="1400" height="230" fill="${f}"/><g fill="${g}">${holes}</g>${frames}</g>`;
+  },
   lens(f, g) {
     let hx = "";
     for (let k = 0; k < 6; k++) { const a = (k * 60 + 15) * Math.PI / 180; hx += `${(500 + 120 * Math.cos(a)).toFixed(1)},${(500 + 120 * Math.sin(a)).toFixed(1)} `; }
