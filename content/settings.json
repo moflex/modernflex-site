@@ -1,0 +1,148 @@
+{
+  "site": {
+    "url": "https://modernflex.co.uk",
+    "email": "hello@modernflex.co.uk",
+    "description": "MODERNFLEX is an independent culture platform covering fashion, music, art, photography, pop culture and creative tech. Worldwide, based in Bristol.",
+    "footer": "Independent culture platform. Covering the world from Bristol since 2017.",
+    "base": "Worldwide / Based in Bristol",
+    "smallprint": "The stories, names and episodes currently on the site are samples showing how it works."
+  },
+  "socials": [
+    {
+      "label": "Instagram",
+      "url": "https://www.instagram.com/modernflex/"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@modernflex"
+    },
+    {
+      "label": "TikTok",
+      "url": "https://www.tiktok.com/@modernflex"
+    }
+  ],
+  "masthead": {
+    "left": "Worldwide / Based in Bristol",
+    "right": "Est. 2017",
+    "signoff": "Fashion. Music. Art. Culture."
+  },
+  "home": {
+    "hero": "the-archive-economy",
+    "edit": [
+      "deadstock-and-the-second-life-of-clothes",
+      "rap-went-global-the-map-went-blank",
+      "retro-won-again-thats-the-problem",
+      "running-a-night-with-40-and-a-group-chat"
+    ],
+    "also": [
+      "walls-arent-a-gallery-stop-treating-them-like-one",
+      "harbourside-6am",
+      "everyones-a-curator-whos-still-a-fan"
+    ]
+  },
+  "editorial": {
+    "intro": "Global culture with a point of view: the stories everyone is talking about, and the ones happening on our doorstep. Fashion, music, art, photography, pop culture and creative tech."
+  },
+  "mftv": {
+    "tagline": "Candid, cinematic, filmed in Bristol first.",
+    "home_tagline": "Modernflex TV. Starting on our own streets.",
+    "series": [
+      {
+        "name": "Street Level",
+        "text": "Bristol’s streets, filmed as they are."
+      },
+      {
+        "name": "Backstage",
+        "text": "The work behind the nights, shows and launches."
+      },
+      {
+        "name": "In the Room",
+        "text": "Creatives at work, where they actually make things."
+      },
+      {
+        "name": "First Look",
+        "text": "Emerging talent before everyone else finds them."
+      }
+    ]
+  },
+  "community": {
+    "intro": "MODERNFLEX is growing past the page. Our audience is everywhere; our first physical home is Bristol, where we can show up in person and build something real.",
+    "home_statement": "More than a publication. A room full of people who make things, and people who want to find them.",
+    "built_for": "Creatives / Artists / Photographers / Musicians / Designers / Brands / Founders",
+    "who_for": "Creatives / Artists / Photographers / Musicians / Designers / Brands / Founders / Anyone who cares about culture",
+    "open_now": [
+      {
+        "title": "Newsletter",
+        "text": "The weekly letter is the simplest way in: stories, episodes and first word on everything we start.",
+        "link": "#newsletter",
+        "link_label": "Sign up below"
+      },
+      {
+        "title": "Creative submissions",
+        "text": "Photographers, writers, designers, musicians, filmmakers: send us your work. We read everything and feature the work that moves us.",
+        "link": "/contact/",
+        "link_label": "Submit your work"
+      }
+    ],
+    "in_development": [
+      {
+        "title": "Events",
+        "text": "Nights, screenings, talks and workshops, starting in Bristol.",
+        "link": "",
+        "link_label": ""
+      },
+      {
+        "title": "Creative spotlights",
+        "text": "Regular features on emerging talent, chosen from submissions and the community.",
+        "link": "",
+        "link_label": ""
+      },
+      {
+        "title": "Community projects",
+        "text": "Zines, exhibitions and films made with the people we cover.",
+        "link": "",
+        "link_label": ""
+      },
+      {
+        "title": "Collaborations",
+        "text": "Pairing creatives with each other, and with brands that respect the work.",
+        "link": "",
+        "link_label": ""
+      },
+      {
+        "title": "Opportunities",
+        "text": "Paid briefs, call-outs and jobs from people we trust.",
+        "link": "",
+        "link_label": ""
+      }
+    ]
+  },
+  "newsletter": {
+    "tagline": "In your inbox, unfiltered.",
+    "pitch": "One email a week: the stories, episodes and people worth your time, plus first word when community events start.",
+    "action": "",
+    "field": "email"
+  },
+  "contact_reasons": [
+    {
+      "title": "Collaborations",
+      "text": "Creatives and brands who want to make something with us."
+    },
+    {
+      "title": "Editorial submissions",
+      "text": "Stories, photo essays, interviews and opinion pitches."
+    },
+    {
+      "title": "Partnerships",
+      "text": "Brands and organisations who share how we see culture."
+    },
+    {
+      "title": "Events",
+      "text": "Venues, promoters and anyone planning something we should be part of."
+    },
+    {
+      "title": "General enquiries",
+      "text": "Anything else. We read every message."
+    }
+  ]
+}
