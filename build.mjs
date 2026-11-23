@@ -76,7 +76,9 @@ const find = (slug) => stories.find((s) => s.slug === slugify(slug || ""));
 
 /* ---------- components ---------- */
 const pic = (o, sizes = "100vw") => o.image ? `<img src="${esc(o.image)}" alt="${esc(o.image_alt || "")}" loading="lazy" decoding="async" sizes="${sizes}">` : plate(o.plate, o.tone);
-const kick = (s) => `<p class="k">${esc(s.section)} / ${esc(s.format)} <span class="mute">/ ${esc(s.location)}</span></p>`;
+const year = (s) => String(s.date || "").slice(0, 4);
+const tagline = (s) => s.archive ? `From the archive <span class="mute">/ ${esc(year(s))}</span>` : `${esc(s.format)} <span class="mute">/ ${esc(s.location)}</span>`;
+const kick = (s) => `<p class="k">${esc(s.section)} / ${tagline(s)}</p>`;
 const card = (s) => `<a class="card" href="${s.url}"><div class="pl">${pic(s, "(max-width: 800px) 100vw, 50vw")}</div>${kick(s)}<h3 class="D">${esc(s.title)}</h3><p class="dek">${esc(s.dek)}</p></a>`;
 const playIcon = `<svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M9 6L22 14L9 22Z" fill="currentColor"/></svg>`;
 const player = (e) => `<div class="frame" data-yt="${esc(e.yt)}" data-title="${esc(e.title)}"><div class="pl">${pic(e)}</div><div class="ov"><span class="chip rec">MFTV</span>${e.length ? `<span class="chip">${esc(e.length)}</span>` : ""}</div><button class="play" type="button" data-play aria-label="Play ${esc(e.title)}">${playIcon}</button></div>
@@ -166,7 +168,7 @@ ${hero ? `<section class="hero x"><div class="wrap"><a class="card" href="${hero
 <section class="x"><div class="wrap"><div class="sh"><h2 class="D">The Edit</h2><a class="more" href="/editorial/">All editorial</a></div>
 <div class="g12 edit">${block(edit[0], "e1")}${block(edit[1], "e2")}
 ${edit[2] ? `<a class="card e3" href="${edit[2].url}">${kick(edit[2])}<h3>${esc(edit[2].title)}</h3><p class="dek">${esc(edit[2].dek)}</p></a>` : ""}${block(edit[3], "e4")}
-${also.length ? `<div class="also">${also.map((s) => `<a class="card" href="${s.url}"><p class="k mute">${esc(s.section)} / ${esc(s.location)}</p><h4 class="D">${esc(s.title)}</h4></a>`).join("")}</div>` : ""}</div></div></section>
+${also.length ? `<div class="also">${also.map((s) => `<a class="card" href="${s.url}"><p class="k mute">${esc(s.section)} / ${esc(s.archive ? year(s) : s.location)}</p><h4 class="D">${esc(s.title)}</h4></a>`).join("")}</div>` : ""}</div></div></section>
 <section class="tvb x"><div class="wrap"><div class="sh"><div><h2 class="D">MFTV</h2><p class="tag">${esc(TV.home_tagline || "")}</p></div><a class="more" href="/mftv/">Watch MFTV</a></div>
 ${ep0 ? `${player(ep0)}${eps.length ? `<div class="eps">${eps.slice(0, 3).map((e) => `<a class="ep" href="/mftv/">${epInner(e)}</a>`).join("")}</div>` : ""}` : tvSoon()}</div></section>
 <section class="com x"><div class="wrap g12"><p class="ct">${esc((S.community || {}).home_statement || "")}</p>
@@ -189,7 +191,7 @@ function editorialPage(sec) {
 function storyPage(s) {
   const rel = [...stories.filter((x) => x !== s && (x.section === s.section || x.format === s.format)), ...stories.filter((x) => x !== s)].filter((x, i, a) => a.indexOf(x) === i).slice(0, 3);
   return page({ title: s.title, desc: s.dek, cur: "/editorial/", pathName: s.url, image: s.image, body: `
-<article><header class="ah x"><div class="wrap"><p class="k"><a href="/editorial/${slugify(s.section)}/">${esc(s.section)}</a> / ${esc(s.format)} <span class="mute">/ ${esc(s.location)}</span></p><h1 class="D">${esc(s.title)}</h1><p class="dek">${esc(s.dek)}</p><p class="k mute">Words: ${esc(s.author || "MODERNFLEX Editorial")} / ${esc(s.dateText)} / ${esc(s.read)} read</p></div></header>
+<article><header class="ah x"><div class="wrap"><p class="k"><a href="/editorial/${slugify(s.section)}/">${esc(s.section)}</a> / ${tagline(s)}</p><h1 class="D">${esc(s.title)}</h1><p class="dek">${esc(s.dek)}</p><p class="k mute">Words: ${esc(s.author || "MODERNFLEX Editorial")} / ${s.archive ? "First published " : ""}${esc(s.dateText)} / ${esc(s.read)} read</p></div></header>
 <div class="x"><div class="wrap"><div class="pl apl">${pic(s)}</div>${s.image_credit ? `<p class="k mute" style="margin-top:8px">${esc(s.image_credit)}</p>` : ""}</div></div>
 <div class="x"><div class="wrap g12 sec"><div class="prose">${s.html}</div></div></div></article>
 ${rel.length ? `<section class="x"><div class="wrap"><div class="sh"><h2 class="D">Keep reading</h2><a class="more" href="/editorial/">All editorial</a></div><div class="g12 r3">${rel.map(card).join("")}</div></div></section>` : ""}` });
