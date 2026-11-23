@@ -3,7 +3,7 @@ statement: "Worldwide. Based in Bristol."
 description: "MODERNFLEX started online in 2017 as an underground culture blog and is becoming an independent culture platform."
 ---
 
-MODERNFLEX started online in 2017 as an underground culture blog: somewhere to write about the clothes, music, art and people we couldn’t stop talking about.
+MODERNFLEX started online in 2017, first as an Instagram page and then as an underground culture blog: somewhere to write about the clothes, music, art and people we couldn’t stop talking about, and to give original creators the attention they deserve.
 
 We’ve always looked outward. Our taste was shaped by American street culture, by Europe’s fashion and music scenes, and by the platforms that made culture coverage feel urgent. We cover what the world is talking about, and the local stories that deserve the same attention.
 

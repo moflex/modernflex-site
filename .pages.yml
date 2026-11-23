@@ -45,12 +45,13 @@ content:
         label: Drawn plate (used only when there is no photo)
         type: select
         options:
-          values: [vinyl, sneaker, figure, crowd, cranes, lens, blocks, wall, phone, bridge]
+          values: [vinyl, sneaker, figure, crowd, cranes, lens, blocks, wall, phone, bridge, frame, film]
       - name: tone
         label: Plate colourway
         type: select
         options:
           values: [ink, cream, blue, bone]
+      - { name: archive, label: From the archive (an old post shown with its original date), type: boolean }
       - { name: draft, label: Draft (hide from the site), type: boolean }
       - { name: sample, label: Sample content, type: boolean, hidden: true }
       - name: body
@@ -88,7 +89,7 @@ content:
         label: Drawn plate
         type: select
         options:
-          values: [vinyl, sneaker, figure, crowd, cranes, lens, blocks, wall, phone, bridge]
+          values: [vinyl, sneaker, figure, crowd, cranes, lens, blocks, wall, phone, bridge, frame, film]
       - name: tone
         label: Plate colourway
         type: select
