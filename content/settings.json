@@ -5,7 +5,7 @@
     "description": "MODERNFLEX is an independent culture platform covering fashion, music, art, photography, pop culture and creative tech. Worldwide, based in Bristol.",
     "footer": "Independent culture platform. Online since 2017, now based in Bristol.",
     "base": "Worldwide / Based in Bristol",
-    "smallprint": "The stories, names and episodes currently on the site are samples showing how it works."
+    "smallprint": ""
   },
   "socials": [
     {
@@ -27,17 +27,17 @@
     "signoff": "Fashion. Music. Art. Culture."
   },
   "home": {
-    "hero": "the-archive-economy",
+    "hero": "the-heist-wave",
     "edit": [
-      "deadstock-and-the-second-life-of-clothes",
-      "rap-went-global-the-map-went-blank",
-      "retro-won-again-thats-the-problem",
-      "running-a-night-with-40-and-a-group-chat"
+      "the-2026-watchlist",
+      "kuki-london-the-pure-energy-of-london-streetwear",
+      "nikea-when-two-cults-fuse-together",
+      "meet-icykof-the-unknown-vlogs"
     ],
     "also": [
-      "walls-arent-a-gallery-stop-treating-them-like-one",
-      "harbourside-6am",
-      "everyones-a-curator-whos-still-a-fan"
+      "welcome-to-modernflex",
+      "an-art-collection-worth-12-million-was-stolen-in-new-york",
+      "a-basquiat-painting-just-sold-for-110-million"
     ]
   },
   "editorial": {
