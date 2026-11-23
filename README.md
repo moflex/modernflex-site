@@ -47,7 +47,15 @@ Use story file names without `.md`. Any empty slot is filled with the latest sto
 
 ### MFTV
 
-Paste a YouTube link into an episode's `youtube` field and the play button will play it on the site. Episodes without a link say "coming soon".
+MFTV fills itself from the MODERNFLEX YouTube channel. Upload a video to YouTube and it appears on the site at the next rebuild. The rebuild happens automatically every morning, and after any change to the site. Only public (or unlisted, if added by hand) videos appear. The channel's feed holds its 15 newest videos.
+
+To give an episode a series, location, running time or better description, add a file in `content/episodes/` (or use the editor) with the same YouTube link. Its details override what YouTube provides. Older videos beyond the newest 15 can be added the same way.
+
+The channel is set in `content/settings.json` under `mftv.channel_id`. Set `auto_from_youtube` to `false` to switch this off.
+
+**Daily rebuild setup (one time):**
+1. In Netlify, go to *Project configuration → Build & deploy → Build hooks*, click *Add build hook*, name it "Daily", and copy the URL.
+2. In GitHub, go to the repository's *Settings → Secrets and variables → Actions*, click *New repository secret*, name it `NETLIFY_BUILD_HOOK`, and paste the URL.
 
 ## Going live (one-time setup)
 

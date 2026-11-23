@@ -46,6 +46,10 @@
   "mftv": {
     "tagline": "Candid, cinematic, filmed in Bristol first.",
     "home_tagline": "Modernflex TV. Starting on our own streets.",
+    "channel_id": "UCdu1a1C7bQ8Olx-mmSfm8wA",
+    "auto_from_youtube": true,
+    "default_series": "Latest",
+    "coming_soon": "First episodes landing soon. Subscribe so you catch them first.",
     "series": [
       {
         "name": "Street Level",
