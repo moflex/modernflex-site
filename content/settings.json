@@ -52,12 +52,6 @@
         "text": "The weekly letter is the simplest way in: stories, episodes and first word on everything we start.",
         "link": "#newsletter",
         "link_label": "Sign up below"
-      },
-      {
-        "title": "Creative submissions",
-        "text": "Photographers, writers, designers, musicians, filmmakers: send us your work. We read everything and feature the work that moves us.",
-        "link": "/contact/",
-        "link_label": "Submit your work"
       }
     ],
     "in_development": [
@@ -69,7 +63,7 @@
       },
       {
         "title": "Creative spotlights",
-        "text": "Regular features on emerging talent, chosen from submissions and the community.",
+        "text": "Regular features on emerging talent worth knowing.",
         "link": "",
         "link_label": ""
       },
@@ -103,10 +97,6 @@
     {
       "title": "Collaborations",
       "text": "Creatives and brands who want to make something with us."
-    },
-    {
-      "title": "Editorial submissions",
-      "text": "Stories, photo essays, interviews and opinion pitches."
     },
     {
       "title": "Partnerships",
