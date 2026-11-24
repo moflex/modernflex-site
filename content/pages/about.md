@@ -1,12 +1,12 @@
 ---
-statement: "Online since 2017. Worldwide."
-description: "MODERNFLEX started online in 2017 as an underground culture blog and is becoming an independent culture platform."
+statement: "Culture worth discovering."
+description: "MODERNFLEX is an independent culture platform covering fashion, music, art, photography, pop culture and creative tech."
 ---
 
-MODERNFLEX started online in 2017 as an underground culture blog: somewhere to write about the clothes, music, art and people we couldn’t stop talking about.
+MODERNFLEX is an independent culture platform covering fashion, music, art, photography, pop culture and creative tech.
 
-We’ve always looked outward. Our taste was shaped by American street culture, by Europe’s fashion and music scenes, and by the platforms that made culture coverage feel urgent. We cover what the world is talking about, and the local stories that deserve the same attention.
+We’re interested in what’s moving culture and the people behind it. That means the stories everyone is talking about, told with context and a point of view, and the ones that haven’t reached everyone yet.
 
-Now MODERNFLEX is becoming an independent culture platform: editorial with a point of view, MFTV for the stories that need to be seen, and a community that puts creatives, brands and curious people in the same room.
+Editorial is where we write it up. MFTV is where we film it. Community is where we bring people together.
 
-The coverage is worldwide, and so is the community. When we meet in person, we go where the people are.
+Got a story, a project or work we should see? Get in touch.
