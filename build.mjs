@@ -138,6 +138,7 @@ ${body}
 </div></footer>
 <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
 <script src="/assets/site.js?v=${BUILD}" defer></script>
+<!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "a2774662cb5f4905837c6749cc65e492"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
 `;
