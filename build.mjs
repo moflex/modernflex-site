@@ -171,7 +171,7 @@ ${also.length ? `<div class="also">${also.map((s) => `<a class="card" href="${s.
 <section class="tvb x"><div class="wrap"><div class="sh"><div><h2 class="D">MFTV</h2><p class="tag">${esc(TV.home_tagline || "")}</p></div><a class="more" href="/mftv/">Watch MFTV</a></div>
 ${ep0 ? `${player(ep0)}${eps.length ? `<div class="eps">${eps.slice(0, 3).map((e) => `<a class="ep" href="/mftv/">${epInner(e)}</a>`).join("")}</div>` : ""}` : tvSoon()}</div></section>
 <section class="com x"><div class="wrap g12"><p class="ct">${esc((S.community || {}).home_statement || "")}</p>
-<div class="cw"><p class="k mute">Built for</p><p class="who D">${esc((S.community || {}).built_for || "")}</p><div class="acts"><a class="btn" href="/community/">Explore community</a><a class="lnk" href="/contact/">Submit your work</a></div></div></div></section>
+<div class="cw"><p class="k mute">Built for</p><p class="who D">${esc((S.community || {}).built_for || "")}</p><div class="acts"><a class="btn" href="/community/">Explore community</a></div></div></div></section>
 ${newsletter("home")}` });
 }
 
@@ -242,7 +242,7 @@ function aboutPage() {
 
 function contactPage() {
   const reasons = S.contact_reasons || [];
-  return page({ title: "Contact", pathName: "/contact/", desc: "Collaborations, editorial submissions, partnerships, events and general enquiries.", body: `
+  return page({ title: "Contact", pathName: "/contact/", desc: "Collaborations, partnerships, events and general enquiries.", body: `
 <section class="ph x"><div class="wrap"><h1 class="D">Contact</h1><p class="intro">Got a story, a project or an idea that belongs here? Tell us.</p></div></section>
 <section class="x sec"><div class="wrap g12"><div class="cr1"><ul class="rs">${reasons.map((r) => `<li><h3 class="D">${esc(r.title)}</h3><p>${esc(r.text)}</p></li>`).join("")}</ul><p class="k mute">Or email</p><p class="em S"><a href="mailto:${esc(S.site.email)}">${esc(S.site.email)}</a></p></div>
 <form class="cf" name="contact" method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="company">
