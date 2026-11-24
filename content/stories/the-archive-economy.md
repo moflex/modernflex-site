@@ -11,6 +11,7 @@ image_alt: ""
 plate: sneaker
 tone: ink
 sample: true
+draft: true
 ---
 
 Ten years ago an old runway jacket was something you found by accident. Now it has a market, a vocabulary and a price guide. Archive fashion has gone from collectors’ forums to the centre of the conversation, and resellers in New York, Tokyo and London are setting the terms.

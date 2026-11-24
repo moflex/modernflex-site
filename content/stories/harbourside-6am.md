@@ -11,6 +11,7 @@ image_alt: ""
 plate: cranes
 tone: bone
 sample: true
+draft: true
 ---
 
 We spent four mornings on the harbour this autumn, starting before sunrise and stopping when the first tourists arrived.

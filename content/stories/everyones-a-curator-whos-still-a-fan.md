@@ -11,6 +11,7 @@ image_alt: ""
 plate: blocks
 tone: ink
 sample: true
+draft: true
 ---
 
 Scroll any feed and you’ll find people arranging culture beautifully: grids of film stills, playlists for very specific weather, ranked lists of albums they’ve had for a week.

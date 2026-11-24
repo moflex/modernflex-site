@@ -11,6 +11,7 @@ image_alt: ""
 plate: vinyl
 tone: ink
 sample: true
+draft: true
 ---
 
 For most of its history, rap was defined by where it came from. You could hear a city in a beat. That map is getting harder to read, and the artists breaking through this year seem happy about it.
