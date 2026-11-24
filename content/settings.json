@@ -2,9 +2,9 @@
   "site": {
     "url": "https://modernflex.co.uk",
     "email": "hello@modernflex.co.uk",
-    "description": "MODERNFLEX is an independent culture platform covering fashion, music, art, photography, pop culture and creative tech. Worldwide, based in Bristol.",
-    "footer": "Independent culture platform. Online since 2017, now based in Bristol.",
-    "base": "Worldwide / Based in Bristol",
+    "description": "MODERNFLEX is an independent culture platform covering fashion, music, art, photography, pop culture and creative tech.",
+    "footer": "Independent culture platform. Online since 2017.",
+    "base": "Worldwide",
     "smallprint": "Published by MODERNFLEX LTD."
   },
   "socials": [
@@ -22,7 +22,7 @@
     }
   ],
   "masthead": {
-    "left": "Worldwide / Based in Bristol",
+    "left": "Worldwide / Online",
     "right": "Est. 2017",
     "signoff": "Fashion. Music. Art. Culture."
   },
@@ -34,36 +34,19 @@
     "also": []
   },
   "editorial": {
-    "intro": "Global culture with a point of view: the stories everyone is talking about, and the ones happening on our doorstep. Fashion, music, art, photography, pop culture and creative tech."
+    "intro": "Global culture with a point of view: the stories everyone is talking about, and the ones they should be. Fashion, music, art, photography, pop culture and creative tech."
   },
   "mftv": {
-    "tagline": "Candid, cinematic, filmed in Bristol first.",
-    "home_tagline": "Modernflex TV. Starting on our own streets.",
+    "tagline": "Candid, cinematic, filmed where culture happens.",
+    "home_tagline": "Modernflex TV. Culture, filmed as it happens.",
     "channel_id": "UCdu1a1C7bQ8Olx-mmSfm8wA",
     "auto_from_youtube": true,
     "default_series": "Latest",
     "coming_soon": "First episodes landing soon. Subscribe so you catch them first.",
-    "series": [
-      {
-        "name": "Street Level",
-        "text": "Bristol’s streets, filmed as they are."
-      },
-      {
-        "name": "Backstage",
-        "text": "The work behind the nights, shows and launches."
-      },
-      {
-        "name": "In the Room",
-        "text": "Creatives at work, where they actually make things."
-      },
-      {
-        "name": "First Look",
-        "text": "Emerging talent before everyone else finds them."
-      }
-    ]
+    "series": []
   },
   "community": {
-    "intro": "MODERNFLEX is growing past the page. Our audience is everywhere; our first physical home is Bristol, where we can show up in person and build something real.",
+    "intro": "MODERNFLEX is growing past the page: a network of creatives, brands and curious people, wherever they are.",
     "home_statement": "More than a publication. A room full of people who make things, and people who want to find them.",
     "built_for": "Creatives / Artists / Photographers / Musicians / Designers / Brands / Founders",
     "who_for": "Creatives / Artists / Photographers / Musicians / Designers / Brands / Founders / Anyone who cares about culture",
@@ -84,7 +67,7 @@
     "in_development": [
       {
         "title": "Events",
-        "text": "Nights, screenings, talks and workshops, starting in Bristol.",
+        "text": "Nights, screenings, talks and workshops, wherever the community is.",
         "link": "",
         "link_label": ""
       },

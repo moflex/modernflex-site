@@ -1,5 +1,5 @@
 ---
-statement: "Worldwide. Based in Bristol."
+statement: "Online since 2017. Worldwide."
 description: "MODERNFLEX started online in 2017 as an underground culture blog and is becoming an independent culture platform."
 ---
 
@@ -9,4 +9,4 @@ We’ve always looked outward. Our taste was shaped by American street culture, 
 
 Now MODERNFLEX is becoming an independent culture platform: editorial with a point of view, MFTV for the stories that need to be seen, and a community that puts creatives, brands and curious people in the same room.
 
-The coverage is worldwide. The physical presence starts in Bristol, where we can host, film and meet people face to face. Other cities come next.
+The coverage is worldwide, and so is the community. When we meet in person, we go where the people are.
