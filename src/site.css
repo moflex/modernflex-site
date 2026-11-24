@@ -233,3 +233,10 @@ a:hover .pl img{transform:scale(1.035)}
 @media(max-width:700px){.bar .in{gap:2px 16px;padding-block:8px}.nav{order:3;width:100%;margin:0;justify-content:space-between}.side{margin-left:auto}}
 @media(max-width:600px){.row{grid-template-columns:96px minmax(0,1fr)}.row .meta,.row .dek{display:none}.two,.ser{grid-template-columns:minmax(0,1fr)}.nrow{flex-wrap:wrap}.nrow .btn{width:100%}.fg{grid-template-columns:minmax(0,1fr)}}
 @media(prefers-reduced-motion:reduce){.pl .art,.mini{transition:none}a:hover .pl .art,button:hover .pl .art{transform:none}}
+/* share row */
+.share{margin-top:2.6em;padding-top:18px;border-top:1px solid var(--rule)}
+.sharebtns{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 20px}
+.prose .sbtn,.sbtn{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border:1.5px solid currentColor;background:transparent;color:inherit;cursor:pointer;font-family:var(--d);font-stretch:75%;font-variation-settings:"wdth" 75;font-weight:700;font-size:15px;text-transform:uppercase;line-height:1}
+.sbtn:hover{background:var(--ink);color:var(--bg)}
+.sbtn[hidden]{display:none}
+.prose .talk{font-size:21px;line-height:1.35;margin:0}

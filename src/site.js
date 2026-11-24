@@ -38,6 +38,15 @@
       fr.replaceChildren(f);
       return;
     }
+    const sh = ev.target.closest("[data-share]");
+    if (sh) { navigator.share({ title: document.title, url: location.href }).catch(() => {}); return; }
+    const cp = ev.target.closest("[data-copy]");
+    if (cp) {
+      const done = () => toast("Link copied.");
+      if (navigator.clipboard) navigator.clipboard.writeText(cp.dataset.copy).then(done, () => toast(cp.dataset.copy));
+      else toast(cp.dataset.copy);
+      return;
+    }
     const tile = ev.target.closest("[data-ep]");
     if (tile && EPS.length) {
       const i = +tile.dataset.ep, holder = document.getElementById("player");
@@ -47,6 +56,9 @@
       holder.scrollIntoView({ block: "center", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
     }
   });
+
+  // Phones: offer the device's own share sheet.
+  if (navigator.share) for (const b of document.querySelectorAll("[data-share]")) b.hidden = false;
 
   // Simple checks before a form is sent.
   document.addEventListener("submit", (ev) => {
