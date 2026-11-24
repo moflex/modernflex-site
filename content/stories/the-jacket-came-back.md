@@ -6,8 +6,9 @@ location: "Worldwide"
 date: 2026-11-24
 dek: "Twelve days out, one leather jacket, a pile of memes and a 28% bounce. Jensen Huang is back at Nvidia. So what makes a founder worth bringing back?"
 author: "MODERNFLEX Editorial"
-image: ""
-image_alt: ""
+image: "/uploads/jensen-huang-cover.svg"
+image_alt: "Collage of a black leather jacket on a red background, with green computer-chip tiles, a torn share-price chart, a REINSTATED headline strip and a 17.02.1963 date tape."
+image_credit: "Illustration: MODERNFLEX"
 plate: figure
 tone: ink
 ---
