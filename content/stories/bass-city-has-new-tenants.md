@@ -11,6 +11,7 @@ image_alt: ""
 plate: vinyl
 tone: ink
 sample: true
+draft: true
 ---
 
 Bristol’s reputation for heavy, slow, sound-system music is older than most of the people now making it. For the producers we spoke to, it’s less a legacy to protect than furniture they grew up around.

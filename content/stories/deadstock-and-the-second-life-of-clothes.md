@@ -11,6 +11,7 @@ image_alt: ""
 plate: figure
 tone: cream
 sample: true
+draft: true
 ---
 
 Kemi Adebayo-Clarke works out of a shared studio above a tyre shop. The rails are full of military surplus, unsold workwear and bolts of fabric rescued from a closing mill. Every piece she makes is a one-off, because the material runs out.

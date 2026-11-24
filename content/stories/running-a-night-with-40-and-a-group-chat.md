@@ -11,6 +11,7 @@ image_alt: ""
 plate: crowd
 tone: blue
 sample: true
+draft: true
 ---
 
 Their first night cost £40: speaker hire from a mate, a box of glow sticks and petrol money. Eighty people came. The second time, two hundred tried to.

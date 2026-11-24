@@ -11,6 +11,7 @@ image_alt: ""
 plate: lens
 tone: cream
 sample: true
+draft: true
 ---
 
 Dami Osei has been photographing the same group of friends for six years: birthdays, raves, house moves, bad haircuts. The archive is the most honest record of young Bristol we’ve seen.

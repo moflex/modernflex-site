@@ -5,7 +5,7 @@
     "description": "MODERNFLEX is an independent culture platform covering fashion, music, art, photography, pop culture and creative tech. Worldwide, based in Bristol.",
     "footer": "Independent culture platform. Online since 2017, now based in Bristol.",
     "base": "Worldwide / Based in Bristol",
-    "smallprint": "© 2026 MODERNFLEX LTD. All rights reserved."
+    "smallprint": "Published by MODERNFLEX LTD."
   },
   "socials": [
     {
@@ -29,16 +29,9 @@
   "home": {
     "hero": "the-jacket-came-back",
     "edit": [
-      "deadstock-and-the-second-life-of-clothes",
-      "rap-went-global-the-map-went-blank",
-      "retro-won-again-thats-the-problem",
-      "running-a-night-with-40-and-a-group-chat"
+      "supremes-collab-calendar-is-the-collection-now"
     ],
-    "also": [
-      "walls-arent-a-gallery-stop-treating-them-like-one",
-      "harbourside-6am",
-      "everyones-a-curator-whos-still-a-fan"
-    ]
+    "also": []
   },
   "editorial": {
     "intro": "Global culture with a point of view: the stories everyone is talking about, and the ones happening on our doorstep. Fashion, music, art, photography, pop culture and creative tech."

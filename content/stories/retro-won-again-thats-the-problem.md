@@ -11,6 +11,7 @@ image_alt: ""
 plate: sneaker
 tone: blue
 sample: true
+draft: true
 ---
 
 Look at what sold out this year and you’ll see the same story: a silhouette from decades ago, a new colourway, a queue around the block. Brands have learned that the past is the safest bet in the building.

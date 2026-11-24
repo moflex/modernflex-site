@@ -11,6 +11,7 @@ image_alt: ""
 plate: wall
 tone: cream
 sample: true
+draft: true
 ---
 
 Walk through any famous street art district on a Saturday and you’ll meet a guided tour every few minutes, each one stopped in front of a wall, each one hearing about a piece that was painted for nobody in particular.
@@ -19,4 +20,4 @@ That was the point. Work on a wall was temporary, uninvited and answerable to th
 
 > Put it behind perspex and it stops being street art. It becomes a backdrop.
 
-The most interesting work in any city is on the walls the tours don’t visit, by people who expect it to be painted over next month. Go and find it before someone frames it.
+The most interesting work in any city is on the walls the tours don't visit, by people who expect it to be painted over next month. Go and find it before someone frames it.
