@@ -187,12 +187,25 @@ function editorialPage(sec) {
 <ul class="rows">${rest.map((s) => `<li><a class="row card" href="${s.url}"><div class="pl">${pic(s, "200px")}</div><div>${kick(s)}<h3 class="D">${esc(s.title)}</h3><p class="dek">${esc(s.dek)}</p></div><p class="meta k mute">${esc(s.dateText)}<br>${esc(s.read)} read</p></a></li>`).join("")}</ul></div></section>` });
 }
 
+function shareRow(s) {
+  const link = (S.site.url || "").replace(/\/$/, "") + s.url;
+  const u = encodeURIComponent(link), t = encodeURIComponent(s.title), tu = encodeURIComponent(`${s.title} ${link}`);
+  const ig = ((S.socials || []).find((x) => /instagram/i.test(x.label || x.url)) || {}).url || "";
+  return `<aside class="share" aria-label="Share this story"><p class="k">Share this story</p><div class="sharebtns">
+<button class="sbtn" type="button" data-share hidden>Share</button>
+<a class="sbtn" href="https://wa.me/?text=${tu}" target="_blank" rel="noopener">WhatsApp</a>
+<a class="sbtn" href="https://x.com/intent/tweet?text=${t}&url=${u}" target="_blank" rel="noopener">X</a>
+<a class="sbtn" href="https://www.threads.net/intent/post?text=${tu}" target="_blank" rel="noopener">Threads</a>
+<button class="sbtn" type="button" data-copy="${esc(link)}">Copy link</button></div>
+${ig ? `<p class="talk S">Got thoughts? Join the conversation on <a href="${esc(ig)}" target="_blank" rel="noopener">Instagram</a>.</p>` : ""}</aside>`;
+}
+
 function storyPage(s) {
   const rel = [...stories.filter((x) => x !== s && (x.section === s.section || x.format === s.format)), ...stories.filter((x) => x !== s)].filter((x, i, a) => a.indexOf(x) === i).slice(0, 3);
   return page({ title: s.title, desc: s.dek, cur: "/editorial/", pathName: s.url, image: s.image, body: `
 <article><header class="ah x"><div class="wrap"><p class="k"><a href="/editorial/${slugify(s.section)}/">${esc(s.section)}</a> / ${esc(s.format)} <span class="mute">/ ${esc(s.location)}</span></p><h1 class="D">${esc(s.title)}</h1><p class="dek">${esc(s.dek)}</p><p class="k mute">Words: ${esc(s.author || "MODERNFLEX Editorial")} / ${esc(s.dateText)} / ${esc(s.read)} read</p></div></header>
 <div class="x"><div class="wrap"><div class="pl apl">${pic(s)}</div>${s.image_credit ? `<p class="k mute" style="margin-top:8px">${esc(s.image_credit)}</p>` : ""}</div></div>
-<div class="x"><div class="wrap g12 sec"><div class="prose">${s.html}</div></div></div></article>
+<div class="x"><div class="wrap g12 sec"><div class="prose">${s.html}${shareRow(s)}</div></div></div></article>
 ${rel.length ? `<section class="x"><div class="wrap"><div class="sh"><h2 class="D">Keep reading</h2><a class="more" href="/editorial/">All editorial</a></div><div class="g12 r3">${rel.map(card).join("")}</div></div></section>` : ""}` });
 }
 
